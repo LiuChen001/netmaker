@@ -10,6 +10,7 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/go-playground/validator/v10"
 	"github.com/gorilla/mux"
 	"github.com/gravitl/netmaker/database"
 	"github.com/gravitl/netmaker/logger"
@@ -19,6 +20,7 @@ import (
 	"github.com/gravitl/netmaker/models"
 
 	"github.com/gravitl/netmaker/mq"
+	"github.com/skip2/go-qrcode"
 	"golang.org/x/exp/slices"
 	"golang.org/x/exp/slog"
 	"golang.zx2c4.com/wireguard/wgctrl/wgtypes"
