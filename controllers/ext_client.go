@@ -10,7 +10,6 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/go-playground/validator/v10"
 	"github.com/gorilla/mux"
 	"github.com/gravitl/netmaker/database"
 	"github.com/gravitl/netmaker/logger"
@@ -20,7 +19,6 @@ import (
 	"github.com/gravitl/netmaker/models"
 
 	"github.com/gravitl/netmaker/mq"
-	"github.com/skip2/go-qrcode"
 	"golang.org/x/exp/slices"
 	"golang.org/x/exp/slog"
 	"golang.zx2c4.com/wireguard/wgctrl/wgtypes"
@@ -473,6 +471,8 @@ func createExtClient(w http.ResponseWriter, r *http.Request) {
 
 	slog.Info("created extclient", "user", r.Header.Get("user"), "network", node.Network, "clientid", extclient.ClientID)
 	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(extclient)
+
 	go func() {
 		if err := logic.SetClientDefaultACLs(&extclient); err != nil {
 			slog.Error("failed to set default acls for extclient", "user", r.Header.Get("user"), "network", node.Network, "error", err)

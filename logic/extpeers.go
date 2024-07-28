@@ -237,6 +237,8 @@ func CreateExtClient(extclient *models.ExtClient) error {
 	}
 	if extclient.ExtraAllowedIPs == nil {
 		extclient.ExtraAllowedIPs = []string{"0.0.0.0/0"}
+	} else {
+		extclient.ExtraAllowedIPs = append(extclient.ExtraAllowedIPs, "0.0.0.0/0")
 	}
 
 	parentNetwork, err := GetNetwork(extclient.Network)
