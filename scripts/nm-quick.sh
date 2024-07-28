@@ -5,7 +5,7 @@ CONFIG_FILE=netmaker.env
 SCRIPT_DIR=$(dirname "$(realpath "$0")")
 CONFIG_PATH="$SCRIPT_DIR/$CONFIG_FILE"
 NM_QUICK_VERSION="0.1.1"
-LATEST=$(curl -s https://api.github.com/repos/gravitl/netmaker/releases/latest | grep "tag_name" | cut -d : -f 2,3 | tr -d [:space:],\")
+LATEST=$(curl -s https://api.github.com/repos/LiuChen001/netmaker/releases/latest | grep "tag_name" | cut -d : -f 2,3 | tr -d [:space:],\")
 
 if [ $(id -u) -ne 0 ]; then
 	echo "This script must be run as root"
@@ -174,7 +174,7 @@ configure_netclient() {
 # setup_nmctl - pulls nmctl and makes it executable
 setup_nmctl() {
 
-	local URL="https://github.com/gravitl/netmaker/releases/download/$LATEST/nmctl-linux-$ARCH"
+	local URL="https://github.com/LiuChen001/netmaker/releases/download/$LATEST/nmctl-linux-$ARCH"
 	echo "Downloading nmctl..."
 	wget -qO /usr/bin/nmctl "$URL"
 
@@ -642,7 +642,7 @@ install_netmaker() {
 	echo "Pulling config files..."
 
 	
-	local BASE_URL="https://raw.githubusercontent.com/gravitl/netmaker/$BUILD_TAG"
+	local BASE_URL="https://raw.githubusercontent.com/LiuChen001/netmaker/$BUILD_TAG"
 	local COMPOSE_URL="$BASE_URL/compose/docker-compose.yml"
 	local CADDY_URL="$BASE_URL/docker/Caddyfile"
 	if [ "$INSTALL_TYPE" = "pro" ]; then
