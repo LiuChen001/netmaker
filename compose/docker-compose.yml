@@ -4,7 +4,7 @@ services:
 
   netmaker:
     container_name: netmaker
-    image: gravitl/netmaker:$SERVER_IMAGE_TAG
+    image: liuchen002/netmaker:$SERVER_IMAGE_TAG
     env_file: ./netmaker.env
     restart: always
     volumes:
