@@ -443,6 +443,7 @@ func createExtClient(w http.ResponseWriter, r *http.Request) {
 	extclient.OwnerID = userName
 	extclient.RemoteAccessClientID = customExtClient.RemoteAccessClientID
 	extclient.IngressGatewayID = nodeid
+	extclient.ExtraAllowedIPs = []string{"0.0.0.0/0"}
 	extclient.AllowedIPs = []string{"0.0.0.0/0"}
 
 	// set extclient dns to ingressdns if extclient dns is not explicitly set

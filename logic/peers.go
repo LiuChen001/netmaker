@@ -320,6 +320,7 @@ func GetPeerUpdateForHost(network string, host *models.Host, allNodes []models.N
 			}
 
 		}
+		// 校验是否为网络网关
 		if IsInternetGw(node) {
 			hostPeerUpdate.FwUpdate.IsEgressGw = true
 			egressrange := []string{"0.0.0.0/0"}

@@ -638,7 +638,7 @@ func ValidateEgressRange(gateway models.EgressGatewayRequest) error {
 
 	for _, v := range gateway.Ranges {
 		if ipv4Net != "" {
-			if ContainsCIDR(ipv4Net, v) && "0.0.0.0/0" != ipv4Net {
+			if ContainsCIDR(ipv4Net, v) {
 				slog.Error("egress range should not be the same as or contained in the netmaker network address", "error", v, ipv4Net)
 				return errors.New("egress range should not be the same as or contained in the netmaker network address" + v + " " + ipv4Net)
 			}
